@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration Form</title>
+</head>
+<body>
+<h2>Registration Form</h2>
+<form id="registrationForm">
+<label for="name">Name:</label>
+<input type="text" id="name" name="name" required><br>
+
+<label for="dob">Date of Birth:</label>
+<input type="date" id="dob" name="dob" required><br>
+
+<label>Gender:</label>
+<input type="radio" id="male" name="gender" value="Male"> Male
+<input type="radio" id="female" name="gender" value="Female"> Female
+<br>
+<label for="mobile">Mobile No.:</label>
+<input type="tel" id="mobile" name="mobile" required><br>
+
+<label for="address">Address:</label>
+<textarea id="address" name="address" required></textarea><br>
+
+<label for="state">State:</label>
+<select id="state" name="state" required>
+<option value="Ahmedabaad">Ahmedabaad</option>
+<option value="Himmatnagar">Himmatnagar</option>
+<option value="surat">surat</option>
+</select><br>
+
+<label for="education">Education:</label>
+<input type="checkbox" id="highSchool" name="education" value="High School"> High School
+<input type="checkbox" id="college" name="education" value="College"> College
+<input type="checkbox" id="graduate" name="education" value="Graduate"> Graduate
+<br>
+
+<label for="image">Image Upload:</label>
+<input type="file" id="image" name="image" accept="image/*"><br>
+
+<input type="button" value="Submit" id="submitButton">
+</form>
+
+<h2>Registration Information:</h2>
+<div id="registrationInfo"></div>
+<script>
+document.getElementById("submitButton").addEventListener("click", function() { const name = document.getElementById("name").value;
+const dob = document.getElementById("dob").value;
+const gender = document.querySelector('input[name="gender"]:checked').value; const email = document.getElementById("email").value;
+const mobile = document.getElementById("mobile").value;
+const address = document.getElementById("address").value; const state = document.getElementById("state").value;
+const educationCheckboxes =
+            document.querySelectorAll('input[name="education"]:checked');
+const education = Array.from(educationCheckboxes).map(checkbox =>              checkbox.value).join(", ");
+const image = document.getElementById("image").files[0];
+
+let info = "Name: " + name + "<br>";
+info += "Date of Birth: " + dob + "<br>"; 
+info += "Gender: " + gender + "<br>";
+info += "Email Id: " + email + "<br>";
+info += "Mobile No.: " + mobile + "<br>"; info += "Address: " + address + "<br>";
+info += "State: " + state + "<br>";
+info += "Education: " + education + "<br>";
+if (image) {
+info += "Image Upload: " + image.name + "<br>";
+}
+
+document.getElementById("registrationInfo").innerHTML = info;
+});
+</script>
+</body>
+</html>
+
